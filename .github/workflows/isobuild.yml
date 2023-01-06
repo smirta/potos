@@ -1,0 +1,23 @@
+name: Build Iso
+on:
+  workflow_dispatch:
+  pull_request:
+jobs:
+  build:
+    name: Build Iso
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+      - name: Run the build process with Docker
+        uses: addnab/docker-run-action@v3
+        with:
+          image: ghcr.io/projectpotos/potos-iso-builder:latest
+          run: ./build-iso
+          options: -v ${{ github.workspace }}:/config -v /output:/output
+      - name: Save iso
+        uses: actions/upload-artifact@v3
+        with:
+          name: potos-iso
+          path: /output/*.iso
+          retention-days: 1
