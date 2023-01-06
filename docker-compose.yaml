@@ -4,5 +4,5 @@ services:
   potos-iso-creation:
     image: ghcr.io/projectpotos/potos-iso-builder:latest
     volumes:
-      - ./config:/config
-      - ./output:/output
+      - ./config:/config:Z
+      - ./output:/output:Z
