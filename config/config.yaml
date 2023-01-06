@@ -1,0 +1,36 @@
+---
+client_name:
+  long: "Potos Linux Client"
+  short: "potos"
+disk_encryption:
+  enable: false
+  init_password: "install"
+specs:
+  url: "https://github.com/projectpotos/"
+  repo: "ansible-specs-potos"
+  branch: "main"
+  ssh_key: ""  # eg. ssh_key: "potos_specs_key" for `potos_specs_key` in this config directory
+  ansible-vault-key-file: ""  # same as ssh_key, but for the file with the ansible-vault key
+initial_hostname: "potoshostname01"
+initial_user:
+  username: "admin"
+  password: "$6$hgKR4OKmuisZMqvz$JAkTyUmVS7UpoCjR6hmmyu9MIGI2EH9xm8JnQiEQ2GdbhJggNmjWWOMdKvH0km0K5GXvsx7BsFr1d9JPFJ.xe0"
+environment: "production"
+first_boot_ansible:
+  runtype: "setup"
+full_unattended_install: false
+input:
+  iso_filename: "ubuntu-22.04.1-live-server-amd64.iso"
+  iso_url: "https://releases.ubuntu.com/22.04/ubuntu-22.04.1-live-server-amd64.iso"
+  iso_sha256_filename: "SHA256SUMS"
+  iso_sha256_url: "https://releases.ubuntu.com/22.04/SHA256SUMS"
+output:
+  version: "22.04"
+  iso_filename: "potos-installer.iso"
+preinstall_packages:
+  - python3-virtualenv
+  - linux-generic-hwe-22.04
+  - ubuntu-desktop
+  - plymouth-theme-ubuntu-logo
+  - ldap-utils
+  - yad
